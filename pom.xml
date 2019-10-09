@@ -5,7 +5,6 @@
     <groupId>com.convious</groupId>
     <artifactId>pricing-api-client</artifactId>
     <version>1.1-SNAPSHOT</version>
-    <packaging>pom</packaging>
     <name>Convious Pricing API Client</name>
     <description>A Java client library that is meant to simplify communication with the Convious pricing API.</description>
     <url>https://github.com/Convious/pricing-api-client-java</url>
@@ -138,20 +137,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
-                <version>3.0.1</version>
-                <executions>
-                    <execution>
-                        <id>attach-sources</id>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-source-plugin</artifactId>
                 <version>3.1.0</version>
                 <configuration>
                     <encoding>UTF-8</encoding>
@@ -160,6 +145,12 @@
                     <execution>
                         <id>attach-javadoc</id>
                         <goals />
+                    </execution>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
                     </execution>
                 </executions>
             </plugin>
