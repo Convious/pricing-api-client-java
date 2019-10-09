@@ -4,7 +4,7 @@
 
     <groupId>com.convious</groupId>
     <artifactId>pricing-api-client</artifactId>
-    <version>1.1-SNAPSHOT</version>
+    <version>1.0-SNAPSHOT</version>
     <name>Convious Pricing API Client</name>
     <description>A Java client library that is meant to simplify communication with the Convious pricing API.</description>
     <url>https://github.com/Convious/pricing-api-client-java</url>
@@ -35,7 +35,7 @@
         <developerConnection>
             scm:git:git://github.com:Convious/pricing-api-client-java.git
         </developerConnection>
-      <tag>HEAD</tag>
+      <tag>pricing-api-client-1.0</tag>
   </scm>
     <developers>
         <developer>
