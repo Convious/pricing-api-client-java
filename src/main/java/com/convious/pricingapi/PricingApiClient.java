@@ -4,6 +4,7 @@ import com.convious.pricingapi.events.InventoryEvent;
 import com.convious.pricingapi.transport.*;
 
 import java.net.URI;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
@@ -44,7 +45,7 @@ public class PricingApiClient {
         return post(
                 new HttpRequest(
                     URI.create(configuration.inventoryEndpoint() + "/events"),
-                    events,
+                    Arrays.stream(events).map(EventEnvelope::new).toArray(EventEnvelope[]::new),
                     new HashMap<>() {{
                         put("Content-Type", List.of("application/json"));
                         put("Accept-Version", List.of(inventoryApiVersion));

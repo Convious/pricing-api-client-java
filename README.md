@@ -1,6 +1,6 @@
 # Convious Pricing API Java client
 A Java client library that is meant to simplify communication with the Convious pricing API.
-## Instalation
+## Installation
 ### Maven
 ```
 <dependency>

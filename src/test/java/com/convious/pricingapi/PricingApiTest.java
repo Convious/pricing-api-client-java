@@ -10,10 +10,7 @@ import org.mockito.ArgumentCaptor;
 import java.math.BigDecimal;
 import java.net.URI;
 import java.time.LocalDate;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 import java.util.concurrent.CompletableFuture;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
@@ -46,15 +43,8 @@ public class PricingApiTest {
         verify(http, times(1)).post(arguments.capture());
         assertEquals(1, arguments.getAllValues().size());
 
-        var expected = new HttpRequest(
-                URI.create(configuration.inventoryEndpoint() + "/events"),
-                events,
-                new HashMap<>() {{
-                    put("Content-Type", List.of("application/json"));
-                    put("Accept-Version", List.of(PricingApiClient.inventoryApiVersion));
-                }}
-        );
-        assertEquals(expected, arguments.getValue());
+        assertEquals(URI.create(configuration.inventoryEndpoint() + "/events"), arguments.getValue().uri());
+        assertArrayEquals(Arrays.stream(events).map(EventEnvelope::new).toArray(EventEnvelope[]::new), (EventEnvelope[])arguments.getValue().body());
     }
 
     @Test
@@ -77,7 +67,7 @@ public class PricingApiTest {
         verify(http, times(1)).post(arguments.capture());
         assertEquals(1, arguments.getAllValues().size());
 
-        assertArrayEquals(new InventoryEvent[] { event }, (InventoryEvent[])arguments.getValue().body());
+        assertArrayEquals(new EventEnvelope[] { new EventEnvelope(event) }, (EventEnvelope[])arguments.getValue().body());
     }
 
     @Test
