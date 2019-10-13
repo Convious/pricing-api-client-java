@@ -36,6 +36,7 @@ class BigDecimalAdapter extends TypeAdapter<BigDecimal> {
 
 public class Json {
     private static Gson gson = new GsonBuilder()
+            .serializeNulls()
             .registerTypeAdapter(LocalDate.class, new LocalDateAdapter().nullSafe())
             .registerTypeAdapter(BigDecimal.class, new BigDecimalAdapter().nullSafe())
             .create();

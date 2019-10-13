@@ -37,6 +37,10 @@ public class AuthenticatedHttpService implements HttpService {
         return ensureLoggedIn(authToken)
                 .thenCompose(token -> underlying.post(applyAuthHeader(request, token)))
                 .thenCompose(response -> {
+                    System.setProperty("http.proxyHost", "127.0.0.1");
+                    System.setProperty("https.proxyHost", "127.0.0.1");
+                    System.setProperty("http.proxyPort", "8888");
+                    System.setProperty("https.proxyPort", "8888");
                     if (response.status() == 401) {
                         return ensureLoggedIn(null).thenCompose(token -> underlying.post(applyAuthHeader(request, token)));
                     }
