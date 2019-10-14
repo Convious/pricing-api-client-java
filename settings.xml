@@ -1,0 +1,21 @@
+<settings>
+    <servers>
+        <server>
+            <id>ossrh</id>
+            <username>${SONATYPE_USER}</username>
+            <password>${SONATYPE_PASSWORD}</password>
+        </server>
+    </servers>
+    <profiles>
+        <profile>
+            <id>ossrh</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <gpg.keyname>5E1399D2BB978B4D</gpg.keyname>
+                <gpg.passphrase></gpg.passphrase>
+            </properties>
+        </profile>
+    </profiles>
+</settings>

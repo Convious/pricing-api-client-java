@@ -1,0 +1,6 @@
+{
+    "name": "build",
+    "pipelines": [
+        "pricing-api-client-java-publish"
+    ]
+}

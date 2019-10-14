@@ -4,7 +4,7 @@
 
     <groupId>com.convious</groupId>
     <artifactId>pricing-api-client</artifactId>
-    <version>1.0.4-SNAPSHOT</version>
+    <version>1.0.8</version>
     <name>Convious Pricing API Client</name>
     <description>A Java client library that is meant to simplify communication with the Convious pricing API.</description>
     <url>https://github.com/Convious/pricing-api-client-java</url>
@@ -101,26 +101,11 @@
                 </executions>
             </plugin>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-release-plugin</artifactId>
-                <version>2.5.3</version>
+                <artifactId>maven-scm-plugin</artifactId>
+                <version>1.11.2</version>
                 <configuration>
-                    <localCheckout>true</localCheckout>
-                    <pushChanges>false</pushChanges>
-                    <mavenExecutorId>forked-path</mavenExecutorId>
+                    <tag>${project.artifactId}-${project.version}</tag>
                 </configuration>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.apache.maven.scm</groupId>
-                        <artifactId>maven-scm-provider-gitexe</artifactId>
-                        <version>1.11.2</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.apache.maven.scm</groupId>
-                        <artifactId>maven-scm-api</artifactId>
-                        <version>1.11.2</version>
-                    </dependency>
-                </dependencies>
             </plugin>
             <plugin>
                 <groupId>org.sonatype.plugins</groupId>
@@ -140,11 +125,19 @@
                 <version>3.1.0</version>
                 <executions>
                     <execution>
-                        <id>attach-javadoc</id>
-                        <goals />
-                    </execution>
-                    <execution>
                         <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
                         <goals>
                             <goal>jar</goal>
                         </goals>

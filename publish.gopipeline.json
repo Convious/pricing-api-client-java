@@ -1,0 +1,34 @@
+{
+    "name": "pricing-api-client-java-publish",
+    "group": "pricer",
+    "enable_pipeline_locking": true,
+    "environment_variables": [],
+    "materials": [
+        {
+            "url": "git@github.com:Convious/pricing-api-client-java.git",
+            "type": "git",
+            "name": "source"
+        }
+    ],
+    "stages": [
+        {
+            "name": "build",
+            "jobs": [
+                {
+                    "name": "build",
+                    "tasks": [
+                        {
+                            "type": "exec",
+                            "command": "/bin/bash",
+                            "arguments": [ "-c", "./bin/publish.sh" ]
+                        }
+                    ],
+                    "artifacts": [
+                    ],
+                    "tabs": [
+                    ]
+                }
+            ]
+        }
+    ]
+}
